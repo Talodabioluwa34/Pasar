@@ -153,3 +153,146 @@ This screen MUST NOT:
 This screen only establishes **trust and selection**.
 
 ---
+
+---
+
+## Screen 3: Checkout & Escrow Lock
+
+### Purpose
+This screen exists to **convert intent into a protected transaction**.
+
+It must make the buyer feel:
+- In control
+- Protected
+- Certain about what happens next
+
+No ambiguity is allowed here.
+
+---
+
+### Who Sees This Screen
+- Buyers only
+- Accessed after tapping “Buy with Escrow” on Product Detail
+
+---
+
+### Core User Intent
+- Confirm purchase details
+- Understand escrow protection
+- Complete payment safely
+
+---
+
+### Data Required (Mandatory)
+
+This screen MUST display the following sections, in this order:
+
+---
+
+#### Section 1: Order Summary
+
+- Phone model
+- Condition grade
+- Price (NGN)
+- Delivery city
+- Seller reputation snapshot
+
+This section is read-only.
+
+---
+
+#### Section 2: Escrow Explanation (Simple)
+
+Must include a short, plain-language explanation:
+
+> “Your payment is locked securely and only released after you confirm delivery.”
+
+No mention of:
+- Blockchain
+- Crypto
+- Smart contracts
+
+---
+
+#### Section 3: Delivery Address
+
+- Select or confirm delivery address
+- City-level precision is sufficient for MVP
+- Address must be editable before payment
+
+---
+
+#### Section 4: Payment Method (V1)
+
+- NGN only
+- Bank transfer / card
+- No crypto selection UI
+
+Payment option must be explicit and singular.
+
+---
+
+### Primary Action (Single CTA)
+
+- Button: “Confirm & Lock Payment”
+
+This CTA:
+- Locks funds in escrow on success
+- Is disabled if any required data is missing
+- Must show loading + success states
+
+---
+
+### Success State
+
+After successful payment:
+- Show confirmation message:
+  “₦X secured in escrow”
+- Transition user to Order Status Timeline screen
+
+---
+
+### Error States
+
+- Payment failure → retry
+- Network failure → retry
+- Escrow unavailable → block transaction
+
+If escrow cannot be locked, the transaction MUST NOT proceed.
+
+---
+
+### Explicitly Forbidden Actions
+
+- No payment outside escrow
+- No partial payments
+- No price changes
+- No promo codes or discounts
+
+---
+
+### Performance Constraints
+
+- Payment confirmation feedback < 3 seconds
+- Clear loading indicators required
+
+---
+
+### Design Constraints
+
+- Calm, neutral UI
+- Emphasis on security and confirmation
+- No celebratory animations
+
+---
+
+### MVP Guardrails
+
+This screen MUST NOT:
+- Offer alternative payment flows
+- Educate about future features
+- Expose seller contact information
+
+This screen exists solely to **lock funds safely**.
+
+---
